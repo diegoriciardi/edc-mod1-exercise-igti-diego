@@ -1,13 +1,13 @@
-name: Deploy
+name: Test on PR
 
 on:
-  push:
+  pull_request:
     branches: [main]
 
 jobs:
-  deploy:
+  teste:
 
-    name: Deploy to Datalake
+    name: Test infra on PR
     runs-on: ubuntu-latest
 
     steps:
@@ -35,4 +35,3 @@ jobs:
         $COMMAND_IAC init
         $COMMAND_IAC validate
         $COMMAND_IAC plan
-        $COMMAND_IAC apply auto-aprove
