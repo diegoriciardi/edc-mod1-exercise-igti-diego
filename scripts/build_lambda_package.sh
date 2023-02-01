@@ -34,7 +34,7 @@ cd $PACKAGE
 
 LAMBDA_FUNCTION=../../etl/lambda_function.py
 
-# Verifica se o arquivo lambda_function.py existe adicionado ainda mais texto outra vez
+# Verifica se o arquivo lambda_function.py existe adicionado ainda mais texto outra vez a s do brasil
 
 if [ -f $LAMBDA_FUNCTION ]
 then
