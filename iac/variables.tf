@@ -9,3 +9,11 @@ variable "ambiente" {
 variable "numero_conta" {
   default = "195195321098"
 }
+
+variable "aws_region" {
+  default = "us-east-1"
+}
+
+variable "lambda_function_name" {
+  default = "IGTIexecutaEMRaovivo"
+}
