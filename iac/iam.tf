@@ -382,6 +382,8 @@ resource "aws_iam_role_policy_attachment" "EMR_DefaultRole_attach" {
 resource "aws_iam_role" "EMR_EC2_DefaultRole" {
     name = "EMR_EC2_DefaultRole"
 
+    path = "/"
+
     assume_role_policy = <<EOF
 {
     "Version": "2008-10-17",
