@@ -472,7 +472,7 @@ resource "aws_iam_role_policy_attachment" "glue_attach" {
 # resource "aws_iam_role_policy_attachment" "EMR_EC2_DefaultRole_attach" {
 #   role       = aws_iam_role.EMR_EC2_DefaultRole.name
 #   policy_arn = aws_iam_policy.AmazonElasticMapReduceforEC2Role.arn
-}
+#}
 
 # resource "aws_iam_role" "SLRole_AWSServiceRoleForEMRCleanup" {
 #     name = "AWSServiceRoleForEMRCleanup"
