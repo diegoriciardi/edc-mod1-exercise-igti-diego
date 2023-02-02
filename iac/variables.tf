@@ -17,3 +17,11 @@ variable "aws_region" {
 variable "lambda_function_name" {
   default = "IGTIexecutaEMRaovivo"
 }
+
+variable "AmiLinux" {
+  type = "map"
+  default = {
+    us-east-1 = "ami-0aa7d40eeae50c9a9" # N. Virginia
+  }
+  description = "have only added one region"
+}
