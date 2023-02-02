@@ -472,7 +472,7 @@ resource "aws_iam_role_policy_attachment" "EMR_EC2_DefaultRole_attach" {
   policy_arn = aws_iam_policy.AmazonElasticMapReduceforEC2Role.arn
 }
 
-resource "aws_iam_role" "AWSServiceRoleForEMRCleanup" {
+resource "aws_iam_role" "SLRole_AWSServiceRoleForEMRCleanup" {
     name = "AWSServiceRoleForEMRCleanup"
 
     assume_role_policy = <<EOF
@@ -529,7 +529,7 @@ EOF
 }
 
 resource "aws_iam_role_policy_attachment" "AWSServiceRoleForEMRCleanup_attach" {
-  role       = aws_iam_role.AWSServiceRoleForEMRCleanup.name
+  role       = aws_iam_role.SLRole_AWSServiceRoleForEMRCleanup.name
   policy_arn = aws_iam_policy.AmazonEMRCleanupPolicy.arn
 }
 
