@@ -37,11 +37,6 @@ SUBNET_FILE_NAME="subnetidfile"
 AZ="us-east-1a"
 aws ec2 describe-subnets --filters "Name=availability-zone,Values=$AZ" --query "Subnets[*].SubnetId" --output text > $SUBNET_FILE_NAME
 
-
-# creating EMR default roles
-aws emr create-default-roles
-aws iam create-service-linked-role --aws-service-name elasticmapreduce.amazonaws.com --description "My service-linked role to support EMR"
-
 LAMBDA_FUNCTION=../../etl/lambda_function.py
 
 # Verifica se o arquivo lambda_function.py existe adicionado ainda mais texto outra vez a s do brasil
