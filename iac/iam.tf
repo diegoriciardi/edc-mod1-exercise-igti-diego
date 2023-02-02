@@ -472,66 +472,66 @@ resource "aws_iam_role_policy_attachment" "EMR_EC2_DefaultRole_attach" {
   policy_arn = aws_iam_policy.AmazonElasticMapReduceforEC2Role.arn
 }
 
-resource "aws_iam_role" "SLRole_AWSServiceRoleForEMRCleanup" {
-    name = "AWSServiceRoleForEMRCleanup"
+# resource "aws_iam_role" "SLRole_AWSServiceRoleForEMRCleanup" {
+#     name = "AWSServiceRoleForEMRCleanup"
 
-    assume_role_policy = <<EOF
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Principal": {
-                "Service": "elasticmapreduce.amazonaws.com"
-            },
-            "Action": "sts:AssumeRole"
-        }
-    ]
-}
-EOF
+#     assume_role_policy = <<EOF
+# {
+#     "Version": "2012-10-17",
+#     "Statement": [
+#         {
+#             "Effect": "Allow",
+#             "Principal": {
+#                 "Service": "elasticmapreduce.amazonaws.com"
+#             },
+#             "Action": "sts:AssumeRole"
+#         }
+#     ]
+# }
+# EOF
 
-}
+# }
 
-resource "aws_iam_policy" "AmazonEMRCleanupPolicy" {
+# resource "aws_iam_policy" "AmazonEMRCleanupPolicy" {
 
-    name        = "AmazonEMRCleanupPolicy"
-    path        = "/aws-service-role/elasticmapreduce.amazonaws.com/"
-    description = "AmazonEMRCleanupPolicy"
+#     name        = "AmazonEMRCleanupPolicy"
+#     path        = "/aws-service-role/elasticmapreduce.amazonaws.com/"
+#     description = "AmazonEMRCleanupPolicy"
 
-  policy = <<EOF
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Resource": "*",
-            "Action": [
-                "ec2:DescribeInstances",
-                "ec2:DescribeLaunchTemplates",
-                "ec2:DescribeSpotInstanceRequests",
-                "ec2:DeleteLaunchTemplate",
-                "ec2:ModifyInstanceAttribute",
-                "ec2:TerminateInstances",
-                "ec2:CancelSpotInstanceRequests",
-                "ec2:DeleteNetworkInterface",
-                "ec2:DescribeInstanceAttribute",
-                "ec2:DescribeVolumeStatus",
-                "ec2:DescribeVolumes",
-                "ec2:DetachVolume",
-                "ec2:DeleteVolume",
-                "ec2:DescribePlacementGroups",
-                "ec2:DeletePlacementGroup"
-            ]
-        }
-    ]
-}
-EOF
-}
+#   policy = <<EOF
+# {
+#     "Version": "2012-10-17",
+#     "Statement": [
+#         {
+#             "Effect": "Allow",
+#             "Resource": "*",
+#             "Action": [
+#                 "ec2:DescribeInstances",
+#                 "ec2:DescribeLaunchTemplates",
+#                 "ec2:DescribeSpotInstanceRequests",
+#                 "ec2:DeleteLaunchTemplate",
+#                 "ec2:ModifyInstanceAttribute",
+#                 "ec2:TerminateInstances",
+#                 "ec2:CancelSpotInstanceRequests",
+#                 "ec2:DeleteNetworkInterface",
+#                 "ec2:DescribeInstanceAttribute",
+#                 "ec2:DescribeVolumeStatus",
+#                 "ec2:DescribeVolumes",
+#                 "ec2:DetachVolume",
+#                 "ec2:DeleteVolume",
+#                 "ec2:DescribePlacementGroups",
+#                 "ec2:DeletePlacementGroup"
+#             ]
+#         }
+#     ]
+# }
+# EOF
+# }
 
-resource "aws_iam_role_policy_attachment" "AWSServiceRoleForEMRCleanup_attach" {
-  role       = aws_iam_role.SLRole_AWSServiceRoleForEMRCleanup.name
-  policy_arn = aws_iam_policy.AmazonEMRCleanupPolicy.arn
-}
+# resource "aws_iam_role_policy_attachment" "AWSServiceRoleForEMRCleanup_attach" {
+#   role       = aws_iam_role.SLRole_AWSServiceRoleForEMRCleanup.name
+#   policy_arn = aws_iam_policy.AmazonEMRCleanupPolicy.arn
+# }
 
 resource "aws_iam_role" "EMR_AutoScaling_DefaultRole" {
     name = "EMR_AutoScaling_DefaultRole"
@@ -584,4 +584,8 @@ EOF
 resource "aws_iam_role_policy_attachment" "EMR_AutoScaling_DefaultRole_attach" {
   role       = aws_iam_role.EMR_AutoScaling_DefaultRole.name
   policy_arn = aws_iam_policy.AmazonElasticMapReduceforAutoScalingRole.arn
+}
+
+resource "aws_iam_service_linked_role" "emr" {
+  aws_service_name = "elasticmapreduce.amazonaws.com"
 }
