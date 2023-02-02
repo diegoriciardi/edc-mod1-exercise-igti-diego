@@ -1,6 +1,12 @@
 import boto3
+import os
 
 def handler(event, context):
+
+    print("tentando criar as roles default...")
+    os.system('aws emr create-default-roles')
+    print("roles default criadas")
+
     """
     Collecting Subnetid from AZ us-east-1a
     """
