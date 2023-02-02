@@ -14,7 +14,7 @@ def handler(event, context):
 
 
     """
-    Lambda function that starts a job flow in EMR.
+    Lambda function that starts a job flow in EMR. 
     """
     client = boto3.client('emr', region_name='us-east-1')
 
