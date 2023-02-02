@@ -2,6 +2,18 @@ import boto3
 
 def handler(event, context):
     """
+    Collecting Subnetid from AZ us-east-1a
+    """
+
+    subnet_file_name = "subnetidfile"
+    subnet_read_mode = "r"
+    subnet_file = open(subnet_file_name, subnet_read_mode)
+    subnetid = ""
+    for l in subnet_file:
+        subnetid = l.strip()
+
+
+    """
     Lambda function that starts a job flow in EMR.
     """
     client = boto3.client('emr', region_name='us-east-1')
@@ -12,7 +24,7 @@ def handler(event, context):
                 JobFlowRole='EMR_EC2_DefaultRole',
                 VisibleToAllUsers=True,
                 LogUri='s3://datalake-dr-igti-ed-tf/emr-logs',
-                ReleaseLabel='emr-5.3.2',
+                ReleaseLabel='emr-5.32.0',
                 Instances={
                     'InstanceGroups': [
                         {
@@ -30,17 +42,15 @@ def handler(event, context):
                             'InstanceCount': 4,
                         }
                     ],
-                    'Ec2KeyName': 'abcde',
+                    'Ec2KeyName': 'cluster-emr-keypair',
                     'KeepJobFlowAliveWhenNoSteps': True,
                     'TerminationProtected': False,
-                    'Ec2SubnetId': 'subnet-0d7718a15bfe3ff1c'
+                    'Ec2SubnetId': subnetid
                 },
 
                 Applications=[
                     {'Name': 'Spark'},
                     {'Name': 'Hive'},
-                    {'Name': 'Pig'},
-                    {'Name': 'Hue'},
                     {'Name': 'JupyterHub'},
                     {'Name': 'JupyterEnterpriseGateway'},
                     {'Name': 'Livy'},
