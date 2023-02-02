@@ -39,8 +39,8 @@ aws ec2 describe-subnets --filters "Name=availability-zone,Values=$AZ" --query "
 
 
 # creating EMR default roles
-# aws emr create-default-roles
-# aws iam create-service-linked-role --aws-service-name elasticmapreduce.amazonaws.com --description "My service-linked role to support EMR"
+aws emr create-default-roles
+aws iam create-service-linked-role --aws-service-name elasticmapreduce.amazonaws.com --description "My service-linked role to support EMR"
 
 LAMBDA_FUNCTION=../../etl/lambda_function.py
 
