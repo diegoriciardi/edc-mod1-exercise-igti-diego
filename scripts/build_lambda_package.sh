@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+NOME_BUCKET_TERRAFORM="terraform-state-igti-dr"
+REGION_BUCKET_TERRAFORM="us-east-1"
+aws s3api create-bucket --acl private --bucket $NOME_BUCKET_TERRAFORM --region $REGION_BUCKET_TERRAFORM
+
 cd iac
 
 # Declara variavel para reutilizacao nas validacoes do diretorio
@@ -17,7 +21,7 @@ else
     echo "============================================================="
 fi
 
-# Declara variavel que localiza o requirements com as dependencias do projeto python  agora ou nunca
+# Declara variavel que localiza o requirements com as dependencias do projeto
 FILE_REQUIREMENTS=../etl/lambda_requirements.txt
 
 # Verifica se o arquivo lambda_requirements.txt existe
@@ -31,6 +35,10 @@ then
 fi
 
 cd $PACKAGE
+
+SUBNET_FILE_NAME="subnetidfile"
+AZ="us-east-1a"
+aws ec2 describe-subnets --filters "Name=availability-zone,Values=$AZ" --query "Subnets[*].SubnetId" --output text > $SUBNET_FILE_NAME
 
 LAMBDA_FUNCTION=../../etl/lambda_function.py
 
