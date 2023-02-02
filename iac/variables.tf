@@ -19,7 +19,7 @@ variable "lambda_function_name" {
 }
 
 variable "AmiLinux" {
-  type = "map"
+  type = map
   default = {
     us-east-1 = "ami-0aa7d40eeae50c9a9" # N. Virginia
   }
