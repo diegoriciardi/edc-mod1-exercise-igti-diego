@@ -460,5 +460,4 @@ resource "aws_iam_role_policy_attachment" "glue_attach" {
 #     ]
 # }
 # EOF
-
-}
+#}
