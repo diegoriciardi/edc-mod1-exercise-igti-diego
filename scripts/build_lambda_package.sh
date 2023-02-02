@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-NOME_BUCKET_TERRAFORM="terraform-state-igti-dr"
-REGION_BUCKET_TERRAFORM="us-east-1"
-aws s3api create-bucket --acl private --bucket $NOME_BUCKET_TERRAFORM --region $REGION_BUCKET_TERRAFORM
-
 cd iac
 
 # Declara variavel para reutilizacao nas validacoes do diretorio
