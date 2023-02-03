@@ -592,7 +592,7 @@ resource "aws_iam_role_policy_attachment" "glue_attach" {
 #   aws_service_name = "elasticmapreduce.amazonaws.com"
 # }
 
-resource "aws_instance_profile" "emr_profile" {
+resource "aws_iam_instance_profile" "emr_profile" {
     name = "emr_profile"
     role = aws_iam_role.EMR_EC2_DefaultRole.name
 }
