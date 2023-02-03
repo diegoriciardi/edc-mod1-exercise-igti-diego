@@ -374,105 +374,105 @@ resource "aws_iam_role_policy_attachment" "glue_attach" {
 
 # }
 
-# resource "aws_iam_role_policy_attachment" "EMR_DefaultRole_attach" {
-#   role       = aws_iam_role.EMR_DefaultRole.name
-#   policy_arn = aws_iam_policy.AmazonElasticMapReduceRole.arn
-# }
+resource "aws_iam_role_policy_attachment" "EMR_DefaultRole_attach" {
+  role       = aws_iam_role.EMR_DefaultRole.name
+  policy_arn = aws_iam_policy.AmazonElasticMapReduceRole.arn
+}
 
-# resource "aws_iam_role" "EMR_EC2_DefaultRole" {
-#     name = "EMR_EC2_DefaultRole"
+resource "aws_iam_role" "EMR_EC2_DefaultRole" {
+    name = "EMR_EC2_DefaultRole"
 
-#     path = "/"
+    path = "/"
 
-#     assume_role_policy = <<EOF
-# {
-#     "Version": "2008-10-17",
-#     "Statement": [
-#         {
-#             "Sid": "",
-#             "Effect": "Allow",
-#             "Principal": {
-#                 "Service": "ec2.amazonaws.com"
-#             },
-#             "Action": "sts:AssumeRole"
-#         }
-#     ]
-# }
-# EOF
+    assume_role_policy = <<EOF
+{
+    "Version": "2008-10-17",
+    "Statement": [
+        {
+            "Sid": "",
+            "Effect": "Allow",
+            "Principal": {
+                "Service": "ec2.amazonaws.com"
+            },
+            "Action": "sts:AssumeRole"
+        }
+    ]
+}
+EOF
 
-# }
+}
 
-# resource "aws_iam_policy" "AmazonElasticMapReduceforEC2Role" {
+resource "aws_iam_policy" "AmazonElasticMapReduceforEC2Role" {
 
-#     name        = "AmazonElasticMapReduceforEC2Role"
-#     path        = "/"
-#     description = "AmazonElasticMapReduceforEC2Role"
+    name        = "AmazonElasticMapReduceforEC2Role"
+    path        = "/"
+    description = "AmazonElasticMapReduceforEC2Role"
 
-#   policy = <<EOF
-# {
-#     "Version": "2012-10-17",
-#     "Statement": [
-#         {
-#             "Effect": "Allow",
-#             "Resource": "*",
-#             "Action": [
-#                 "cloudwatch:*",
-#                 "dynamodb:*",
-#                 "ec2:Describe*",
-#                 "elasticmapreduce:Describe*",
-#                 "elasticmapreduce:ListBootstrapActions",
-#                 "elasticmapreduce:ListClusters",
-#                 "elasticmapreduce:ListInstanceGroups",
-#                 "elasticmapreduce:ListInstances",
-#                 "elasticmapreduce:ListSteps",
-#                 "kinesis:CreateStream",
-#                 "kinesis:DeleteStream",
-#                 "kinesis:DescribeStream",
-#                 "kinesis:GetRecords",
-#                 "kinesis:GetShardIterator",
-#                 "kinesis:MergeShards",
-#                 "kinesis:PutRecord",
-#                 "kinesis:SplitShard",
-#                 "rds:Describe*",
-#                 "s3:*",
-#                 "sdb:*",
-#                 "sns:*",
-#                 "sqs:*",
-#                 "glue:CreateDatabase",
-#                 "glue:UpdateDatabase",
-#                 "glue:DeleteDatabase",
-#                 "glue:GetDatabase",
-#                 "glue:GetDatabases",
-#                 "glue:CreateTable",
-#                 "glue:UpdateTable",
-#                 "glue:DeleteTable",
-#                 "glue:GetTable",
-#                 "glue:GetTables",
-#                 "glue:GetTableVersions",
-#                 "glue:CreatePartition",
-#                 "glue:BatchCreatePartition",
-#                 "glue:UpdatePartition",
-#                 "glue:DeletePartition",
-#                 "glue:BatchDeletePartition",
-#                 "glue:GetPartition",
-#                 "glue:GetPartitions",
-#                 "glue:BatchGetPartition",
-#                 "glue:CreateUserDefinedFunction",
-#                 "glue:UpdateUserDefinedFunction",
-#                 "glue:DeleteUserDefinedFunction",
-#                 "glue:GetUserDefinedFunction",
-#                 "glue:GetUserDefinedFunctions"
-#             ]
-#         }
-#     ]
-# }
-# EOF
-# }
+  policy = <<EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Resource": "*",
+            "Action": [
+                "cloudwatch:*",
+                "dynamodb:*",
+                "ec2:Describe*",
+                "elasticmapreduce:Describe*",
+                "elasticmapreduce:ListBootstrapActions",
+                "elasticmapreduce:ListClusters",
+                "elasticmapreduce:ListInstanceGroups",
+                "elasticmapreduce:ListInstances",
+                "elasticmapreduce:ListSteps",
+                "kinesis:CreateStream",
+                "kinesis:DeleteStream",
+                "kinesis:DescribeStream",
+                "kinesis:GetRecords",
+                "kinesis:GetShardIterator",
+                "kinesis:MergeShards",
+                "kinesis:PutRecord",
+                "kinesis:SplitShard",
+                "rds:Describe*",
+                "s3:*",
+                "sdb:*",
+                "sns:*",
+                "sqs:*",
+                "glue:CreateDatabase",
+                "glue:UpdateDatabase",
+                "glue:DeleteDatabase",
+                "glue:GetDatabase",
+                "glue:GetDatabases",
+                "glue:CreateTable",
+                "glue:UpdateTable",
+                "glue:DeleteTable",
+                "glue:GetTable",
+                "glue:GetTables",
+                "glue:GetTableVersions",
+                "glue:CreatePartition",
+                "glue:BatchCreatePartition",
+                "glue:UpdatePartition",
+                "glue:DeletePartition",
+                "glue:BatchDeletePartition",
+                "glue:GetPartition",
+                "glue:GetPartitions",
+                "glue:BatchGetPartition",
+                "glue:CreateUserDefinedFunction",
+                "glue:UpdateUserDefinedFunction",
+                "glue:DeleteUserDefinedFunction",
+                "glue:GetUserDefinedFunction",
+                "glue:GetUserDefinedFunctions"
+            ]
+        }
+    ]
+}
+EOF
+}
 
-# resource "aws_iam_role_policy_attachment" "EMR_EC2_DefaultRole_attach" {
-#   role       = aws_iam_role.EMR_EC2_DefaultRole.name
-#   policy_arn = aws_iam_policy.AmazonElasticMapReduceforEC2Role.arn
-# }
+resource "aws_iam_role_policy_attachment" "EMR_EC2_DefaultRole_attach" {
+  role       = aws_iam_role.EMR_EC2_DefaultRole.name
+  policy_arn = aws_iam_policy.AmazonElasticMapReduceforEC2Role.arn
+}
 
 # resource "aws_iam_role" "SLRole_AWSServiceRoleForEMRCleanup" {
 #     name = "AWSServiceRoleForEMRCleanup"
