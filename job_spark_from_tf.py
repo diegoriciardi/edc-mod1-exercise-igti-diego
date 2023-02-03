@@ -18,7 +18,7 @@ enem = (
     .option("header", True)
     .option("inferSchema", True)
     .option("delimiter", ";")
-    .load("s3://datalake-neyzinho-igti-ed-tf/raw-data/enem/")
+    .load("s3://datalake-dr-igti-ed-tf-producao-045169361996/raw-data/enem/")
 )
 
 (
@@ -27,5 +27,5 @@ enem = (
     .mode("overwrite")
     .format("parquet")
     .partitionBy("year")
-    .save("s3://datalake-neyzinho-igti-ed-tf/staging/enem")
+    .save("s3://datalake-dr-igti-ed-tf-producao-045169361996/staging/enem")
 )
