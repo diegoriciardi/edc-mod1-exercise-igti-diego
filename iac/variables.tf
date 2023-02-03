@@ -7,7 +7,7 @@ variable "ambiente" {
 }
 
 variable "numero_conta" {
-  default = "191260705629"
+  default = "297587135663"
 }
 
 variable "aws_region" {
