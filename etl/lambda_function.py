@@ -24,7 +24,7 @@ def handler(event, context):
                 ServiceRole='EMR_DefaultRole',
                 JobFlowRole='EMR_EC2_DefaultRole',
                 VisibleToAllUsers=True,
-                LogUri='s3://datalake-dr-igti-ed-tf/emr-logs',
+                LogUri='s3://datalake-dr-igti-ed-tf-producao-045169361996/emr-logs',
                 ReleaseLabel='emr-5.32.0',
                 Instances={
                     'InstanceGroups': [
@@ -104,7 +104,7 @@ def handler(event, context):
                                  '--conf', 'spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog', 
                                  '--master', 'yarn',
                                  '--deploy-mode', 'cluster',
-                                 's3://datalake-dr-igti-ed-tf/emr-code/pyspark/01_delta_spark_insert.py'
+                                 's3://datalake-dr-igti-ed-tf-producao-045169361996/emr-code/pyspark/01_delta_spark_insert.py'
                                  ]
                     }
                 },
@@ -119,7 +119,7 @@ def handler(event, context):
                                  '--conf', 'spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog', 
                                  '--master', 'yarn',
                                  '--deploy-mode', 'cluster',
-                                 's3://datalake-dr-igti-ed-tf/emr-code/pyspark/02_delta_spark_upsert.py'
+                                 's3://datalake-dr-igti-ed-tf-producao-045169361996/emr-code/pyspark/02_delta_spark_upsert.py'
                                  ]
                     }
                 }],
