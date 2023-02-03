@@ -39,6 +39,13 @@ aws ec2 describe-subnets --filters "Name=availability-zone,Values=$AZ" --query "
 
 LAMBDA_FUNCTION=../../etl/lambda_function.py
 
+aws emr create-default-roles
+sleep 3
+aws iam create-service-linked-role --aws-service-name elasticmapreduce.amazonaws.com --description "My service-linked role to support EMR"
+sleep 3
+aws iam create-instance-profile --instance-profile-name EMR_EC2_DefaultRole
+sleep 3
+
 # Verifica se o arquivo lambda_function.py existe adicionado ainda mais texto outra vez a s do brasil
 
 if [ -f $LAMBDA_FUNCTION ]
